@@ -158,7 +158,7 @@ class AlQutaibiBankAttributes extends Guzzle
     protected function setEncryptedCustomerNo()
     {
         $destnation_conf = config('AlQutaibiBank.payment_destnation');
-        $destnation_atr = $this->attributes['payment_DestNation'];
+        $destnation_atr = $this->attributes['payment_DestNation'] ?? null;
         if (empty($destnation_conf) && empty($destnation_atr)) {
             throw new \Exception('payment_DestNation is not set in the request');
         }
