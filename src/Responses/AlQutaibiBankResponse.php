@@ -40,7 +40,10 @@ class AlQutaibiBankResponse
 
     public function isSuccess()
     {
-        return ($this->data['status']);
+        if(isset($this->data['status'])){
+            return $this->data['status'];
+        }
+        return false;
     }
 
 

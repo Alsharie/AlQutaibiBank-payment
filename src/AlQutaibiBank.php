@@ -21,7 +21,7 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
             $this->attributes['payment_Curr'] = 1;// default currency is YER
         }
 
-        try {
+//        try {
             // set header info
             $this->setEncryptedCustomerNo();
             $this->setHeaderKeys();
@@ -33,11 +33,11 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
             );
 
             return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody());
-        } catch (\GuzzleHttp\Exception\RequestException $e) {
-            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
-        } catch (\Exception $e) {
-            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode());
-        }
+//        } catch (\GuzzleHttp\Exception\RequestException $e) {
+//            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
+//        } catch (\Exception $e) {
+//            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode());
+//        }
     }
 
 
@@ -48,7 +48,7 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
     public function confirmPayment()
     {
 
-        try {
+//        try {
             // set header info
             $this->setEncryptedCustomerNo();
             $this->setHeaderKeys();
@@ -60,11 +60,11 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
             );
 
             return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody());
-        } catch (\GuzzleHttp\Exception\RequestException $e) {
-            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
-        } catch (\Exception $e) {
-            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode());
-        }
+//        } catch (\GuzzleHttp\Exception\RequestException $e) {
+//            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
+//        } catch (\Exception $e) {
+//            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode());
+//        }
     }
 
 
