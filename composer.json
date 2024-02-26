@@ -1,0 +1,33 @@
+{
+    "name": "alsharie/AlQutaibiBank-payment",
+    "description": "AlQutaibiBank payment gateway",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^7.5",
+        "illuminate/support": ">=9.33",
+        "ext-openssl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alsharie\\AlQutaibiBankPayment\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alsharie",
+            "email": "abdulrahman.alsharie@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Alsharie\\AlQutaibiBankPayment\\AlQutaibiBankServiceProvider"
+            ],
+            "aliases": {
+                "AlQutaibiBankPayment": "AlQutaibiBankPayment"
+            }
+        }
+    }
+}
