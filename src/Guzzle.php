@@ -72,12 +72,12 @@ class Guzzle
 
     protected function getRequestPaymentPath(): string
     {
-        return $this->basePath . '/' . "PayBills/E_Payment/RequestPayment";
+        return $this->basePath . '/' . "/E_Payment/RequestPayment";
     }
 
     protected function getConfirmPaymentPath(): string
     {
-        return $this->basePath . '/' . "PayBills/E_Payment/ConfirmPayment";
+        return $this->basePath . '/' . "/E_Payment/ConfirmPayment";
     }
 
 
