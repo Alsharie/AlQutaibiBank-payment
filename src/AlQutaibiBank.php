@@ -22,17 +22,21 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
         }
 
 //        try {
-            // set header info
-            $this->setEncryptedCustomerNo();
-            $this->setHeaderKeys();
-            $response = $this->sendRequest(
-                $this->getRequestPaymentPath(),
-                $this->attributes,
-                $this->headers,
-                $this->security
-            );
+        // set header info
+        $this->setEncryptedCustomerNo();
+        $this->setHeaderKeys();
+        $response = $this->sendRequest(
+            $this->getRequestPaymentPath(),
+            $this->attributes,
+            $this->headers,
+            $this->security
+        );
 
-            return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody());
+        $request = [
+            'headers' => $this->headers,
+            'attributes' => $this->attributes,
+        ];
+        return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody(), $request);
 //        } catch (\GuzzleHttp\Exception\RequestException $e) {
 //            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
 //        } catch (\Exception $e) {
@@ -49,17 +53,21 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
     {
 
 //        try {
-            // set header info
-            $this->setEncryptedCustomerNo();
-            $this->setHeaderKeys();
-            $response = $this->sendRequest(
-                $this->getConfirmPaymentPath(),
-                $this->attributes,
-                $this->headers,
-                $this->security,
-            );
+        // set header info
+        $this->setEncryptedCustomerNo();
+        $this->setHeaderKeys();
+        $response = $this->sendRequest(
+            $this->getConfirmPaymentPath(),
+            $this->attributes,
+            $this->headers,
+            $this->security,
+        );
 
-            return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody());
+        $request = [
+            'headers' => $this->headers,
+            'attributes' => $this->attributes,
+        ];
+        return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody(), $request);
 //        } catch (\GuzzleHttp\Exception\RequestException $e) {
 //            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
 //        } catch (\Exception $e) {

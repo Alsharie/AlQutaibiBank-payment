@@ -12,13 +12,15 @@ class AlQutaibiBankResponse
      * @var array
      */
     protected $data = [];
+    public $request;
 
     /**
      * Response constructor.
      */
-    public function __construct($response)
+    public function __construct($response,$request)
     {
         $this->data = (array)json_decode($response, true);
+        $this->request = $request;
     }
 
 
