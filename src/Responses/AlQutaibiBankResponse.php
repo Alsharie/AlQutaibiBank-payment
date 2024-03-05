@@ -12,7 +12,7 @@ class AlQutaibiBankResponse
      * @var array
      */
     protected $data = [];
-    public $request;
+    protected $request;
 
     /**
      * Response constructor.
@@ -38,6 +38,10 @@ class AlQutaibiBankResponse
     public function body()
     {
         return $this->data;
+    }
+
+    public function getRequest(){
+        return $this->request;
     }
 
     public function isSuccess()
