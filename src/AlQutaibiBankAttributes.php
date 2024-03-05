@@ -163,7 +163,7 @@ class AlQutaibiBankAttributes extends Guzzle
             throw new \Exception('payment_DestNation is not set in the request');
         }
         $destnation = !empty($destnation_atr) ? $destnation_atr : $destnation_conf;
-
+        $this->attributes['payment_DestNation'] = $destnation;
         $this->attributes['customer_no'] = $this->encryptString(config('AlQutaibiBank.api_key'), $destnation);
     }
 
