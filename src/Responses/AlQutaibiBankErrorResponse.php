@@ -7,12 +7,11 @@ class AlQutaibiBankErrorResponse extends AlQutaibiBankResponse
 {
     protected $success = false;
 
-    public function __construct($response, $status)
+    public function __construct($response, $status, $request)
     {
-        $this->data = (array) json_decode($response);
+        parent::__construct($response, $request);
         $this->data['status_code'] = $status;
     }
-
 
 
 }

@@ -21,27 +21,28 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
             $this->attributes['payment_Curr'] = 1;// default currency is YER
         }
 
-//        try {
-        // set header info
-        $this->setEncryptedCustomerNo();
-        $this->setHeaderKeys();
-        $response = $this->sendRequest(
-            $this->getRequestPaymentPath(),
-            $this->attributes,
-            $this->headers,
-            $this->security
-        );
-
         $request = [
             'headers' => $this->headers,
             'attributes' => $this->attributes,
         ];
-        return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody(), $request);
-//        } catch (\GuzzleHttp\Exception\RequestException $e) {
-//            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
-//        } catch (\Exception $e) {
-//            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode());
-//        }
+
+        try {
+            // set header info
+            $this->setEncryptedCustomerNo();
+            $this->setHeaderKeys();
+            $response = $this->sendRequest(
+                $this->getRequestPaymentPath(),
+                $this->attributes,
+                $this->headers,
+                $this->security
+            );
+
+            return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody(), $request);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode(), $request);
+        } catch (\Exception $e) {
+            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode(), $request);
+        }
     }
 
 
@@ -52,27 +53,31 @@ class AlQutaibiBank extends AlQutaibiBankAttributes
     public function confirmPayment()
     {
 
-//        try {
-        // set header info
-        $this->setEncryptedCustomerNo();
-        $this->setHeaderKeys();
-        $response = $this->sendRequest(
-            $this->getConfirmPaymentPath(),
-            $this->attributes,
-            $this->headers,
-            $this->security,
-        );
+        if (!isset($this->attributes['payment_Curr'])) {
+            $this->attributes['payment_Curr'] = 1;// default currency is YER
+        }
 
         $request = [
             'headers' => $this->headers,
             'attributes' => $this->attributes,
         ];
-        return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody(), $request);
-//        } catch (\GuzzleHttp\Exception\RequestException $e) {
-//            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
-//        } catch (\Exception $e) {
-//            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode());
-//        }
+        try {
+            // set header info
+            $this->setEncryptedCustomerNo();
+            $this->setHeaderKeys();
+            $response = $this->sendRequest(
+                $this->getConfirmPaymentPath(),
+                $this->attributes,
+                $this->headers,
+                $this->security,
+            );
+
+            return new AlQutaibiBankRequestPaymentResponse((string)$response->getBody(), $request);
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            return new AlQutaibiBankErrorResponse($e->getResponse()->getBody(), $e->getResponse()->getStatusCode(), $request);
+        } catch (\Exception $e) {
+            return new AlQutaibiBankErrorResponse($e->getTraceAsString(), $e->getCode(), $request);
+        }
     }
 
 
